@@ -1,5 +1,5 @@
 def main():
-    name = input("What is your name?\n")
+    name = input("What is your name?\n")  # creates name value
     birthday = input("What is your birthday?\n")
     capacity = input("What capacity are you operating in?\n")
     likes = input("What do you like today?\n")
