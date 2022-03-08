@@ -11,10 +11,10 @@ def main():
     secNum = int(input("Please enter the second number:\n"))
 
     numTotal = firstNum+secNum
-    print("The total of the two numbers is ", str(numTotal))
+    print("The total of the two numbers is ", numTotal)
 
     numAvg = (firstNum+secNum)/2
-    print("The average of the two numbers is", str(numAvg))
+    print("The average of the two numbers is", numAvg)
 
 
 
