@@ -3,39 +3,39 @@ Boring stuff
 Author: Dan
 Date: 3/3/22
 """
+import time
+import random
 
 
-class rockPaperScissors():
-    playerScore = 0
-    compScore = 0
-    playerName = ""
+class rockPaperScissors(object):
 
-    def __init__(self, x, y):
-        rockPaperScissors.playerScore = x
-        rockPaperScissors.playerScore = y
+    def __init__(self, playerScore, compScore, playerName, outcomes=["R", "P", "S"]):
+        rockPaperScissors.playerScore = playerScore
+        rockPaperScissors.compScore = compScore
+        rockPaperScissors.playerName = playerName
+        self.outcomes = outcomes
 
-    def gameMono(self):
-        playerName = ob1.playerName = input("What is your name?")
-        print(playerName)
-
-
-class playGame(rockPaperScissors):
-    def __init__(self):
-        print("")
-
-    def runTest(self):
-        print(ob1.playerScore)
-        ob1.compScore = 90
-        print(ob1.compScore)
+    def introduction(self):
+        print("Hello " + self.playerName)
+        print("This is a game of rock paper scissors!")
+        # time.sleep(0.5)
+        print("You will say rock, paper or scissors and the computer will play against you.")
+        # time.sleep(0.5)
+        print("The inputs are: R = Rock, S = Scissors, P = paper.")
+        print("You get five rounds to win.\n")
+        # time.sleep(5)
 
 
-ob1 = rockPaperScissors
-playerName = input()
-playGame.runTest(playerName)
-rockPaperScissors.gameMono("tello")
+class computer(object):
+    def compChoice(self, compChoice):
+        compChoice.outcomes = compChoice
+        print(compChoice)
 
 
-class winSenario:
+playerName = input("enter name\n")
 
-    def __init__(self):
-        print(self.playerScore)
+objectTest = rockPaperScissors(0, 0, playerName)
+comp = computer(objectTest)
+
+
+
