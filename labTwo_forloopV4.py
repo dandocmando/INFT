@@ -14,8 +14,7 @@ def diamondgenerator():
 
     else:
 
-        ast = "*"
-        blank = " "
+        ast, blank = "*", " "
         line = line / 2  # half's the number (however not true division), the way the diamond is created fixes this
         # inaccuracy
         line = int(line)  # turns line from a float into an integer
