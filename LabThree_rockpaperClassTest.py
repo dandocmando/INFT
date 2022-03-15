@@ -29,6 +29,7 @@ class playGame(rockPaperScissors):
         print(ob1.compScore)
 
 
+
 ob1 = rockPaperScissors
 playerName = input()
 playGame.runTest(playerName)
