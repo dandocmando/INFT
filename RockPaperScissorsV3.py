@@ -36,20 +36,20 @@ class computer(rockPaperScissors):
        # return compChoice
 
 
-class player:
-    def __init__(self):
-        self.player = rockPaperScissors.playerName
-        self.playerScore = rockPaperScissors.playerScore
+class player(rockPaperScissors):
+    def __init__(self, compScore, playerScore):
 
-    #def __str__(self):
-        #return self.player
+        rockPaperScissors.__init__(self, compScore, playerScore)
 
-    def playerChoice(self):
+
+
+    def playerChoice(self, playerScore):
         print("Guess either: R, P, S")
         choice = input()
+        return playerScore
 
 
-class WinLose:
+class WinLose(rockPaperScissors):
     def __init__(self):
         self.playerGuess = player.playerChoice
         compGuess = computer.compChoice

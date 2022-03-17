@@ -60,23 +60,25 @@ def main():
     print("Gift card completely used!\n")
 
     for x in range(loop_count):  # prints the list of transactions ordered highest cost to lowest :)
-        print("\nCost: $" + str(gc_list_sorted[x][0]) + ", item description: " + str(gc_list_sorted[x][1]))
+        print("Cost: $" + str(gc_list_sorted[x][0]) + ", item description: " + str(gc_list_sorted[x][1]))
 
     gc_num_item_purchased = len(gc_list_sorted)
     gc_average_cost = sum(gc_cost_lst) / gc_num_item_purchased
 
     # print(round(gc_average_cost, 2))
     # print(gc_num_item_purchased)
-    print("Gift card used: "+str(gc_name)+", spending limit: "+str(gc_max_spend))
+    print("\nGift card used: "+str(gc_name)+", spending limit: "+str(gc_max_spend))
     print("The number of items purchased was: " + str(gc_num_item_purchased))
     print("The average cost was: " + str(round(gc_average_cost, 2))+"\n")
 
     print("Would you like to try another card or exit the program?")
     retry = input("Enter R to retry, enter E to exit the program: ")
     if retry == "R":
+        print("\n")
         main()
 
     elif retry == "E":
+        print("Have a nice day!")
         sys.exit()
 
     else:
