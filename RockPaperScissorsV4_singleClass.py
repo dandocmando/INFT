@@ -24,30 +24,34 @@ class RockPaperScissors:
         print("You get five rounds to win.\n")
         # time.sleep(5)
 
-    def compChoice(self):
-        # print(self.outcomes)
-        compChoice = random.choice(self.outcomes)
-       # return compChoice
-
-
-    def playerChoice(self, playerScore):
-        print("Guess either: R, P, S")
-        choice = input()
-        return playerScore
-
-
-    def playerVComp(self):
+    def comp_vs_user(self):
         print("nnn")
-        # if self.playerGuess == self.compGuess:
-        # print("equal")
 
-        print(self.playerGuess)
+    def comp_choice(self):
+
+        # print(random.choice(list(self.outcomes)))
+        return random.choice(list(self.outcomes))
+
+    def user_choice(self):
+        enter_legal_choice = False
+        while not enter_legal_choice:
+            print("Guess either: R, P, S")
+            player_choice = input()
+
+            if player_choice not in self.outcomes:
+                print("You didn't input R, P or S. Please try again.")
+
+            else:
+                enter_legal_choice = True
+
+            comp_choice = self.comp_choice()
+            print("test")
 
 
-#playerName = "testinput"
+# playerName = "testinput"
 
 # class initialisation and execution
 init_rockPaperScissors = RockPaperScissors("Dan")  # initialises the rockpaperscissors class inputs name
 init_rockPaperScissors.introduction()  # executes the introduction def in rock++etc class
-
-
+init_rockPaperScissors.comp_choice()
+init_rockPaperScissors.user_choice()
