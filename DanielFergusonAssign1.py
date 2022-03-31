@@ -88,7 +88,7 @@ class SpendingSpree:
         username = self.username
 
         # nests Cost and Items into sublists so that Cost var can be manipulated using sorted function
-        # use prints on the below lists after manipulation to gain greater understanding of what is happening
+        # use prints on the below lists after manipulation to gain greater understanding of what is happening :)
         gc_list_nested = [list(t) for t in zip(gc_cost_lst, gc_items_lst)]
         # uses nested list to sort nested items based on cost, because desc is nested it follows cost movement
         gc_list_sorted = sorted(gc_list_nested, key=lambda l: l[0], reverse=True)
@@ -96,7 +96,7 @@ class SpendingSpree:
         print("Gift card expended, your purchases are listed below, they are ordered from most to least expensive.\n")
         for x in range(loop_count):  # prints the list of transactions ordered highest cost to lowest :)
             print("Cost: $" + str(gc_list_sorted[x][0]) + ", item description: " + str(gc_list_sorted[x][1]))
-            time.sleep(self.default_time)
+            time.sleep(self.default_time)  # exceeds requirement to print most expensive item.
 
         gc_num_item_purchased = len(gc_list_sorted)  # counts number of nested list items for average computation
         gc_average_cost = sum(gc_cost_lst) / gc_num_item_purchased  # average cost with sum of lst / num of purchases
