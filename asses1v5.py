@@ -5,6 +5,7 @@ Date: 10/3/22
 Task: INFT1004 Assignment 1: Spending Spree
 This is version 4.
 Only used one class to pass variables :)
+Don't attempt to launch a def from the console, simply run the program with the button.
 """
 import sys
 
@@ -112,7 +113,7 @@ class SpendingSpree:
             sys.exit()
 
 
-game_ob = SpendingSpree()
-game_ob.intro()
+game_ob = SpendingSpree()  # creates object based on spending spree class
+game_ob.intro()  # launches defs from spending spree object
 game_ob.loop()
 game_ob.list()
