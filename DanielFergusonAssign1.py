@@ -2,9 +2,10 @@
 Boring stuff
 Author: Daniel Ferguson
 Auth ID: 3374690
-Date: Start -> 09/3/22 Upload -> 19/3/22
+Date: Start -> 09/3/22 Upload -> 31/3/22
 Task: INFT1004 Assignment 1: Spending Spree
 This is version 5, if you would like to view previous versions I can supply them.
+You DO NOT need to write defs into the console, just run the entire program.
 Only used one class to pass variables :)
 """
 import sys
@@ -53,7 +54,7 @@ class SpendingSpree:
         gc_cost_lst = self.gc_cost_lst
         gc_items_lst = self.gc_items_lst
         loop_count = self.loop_count
-
+        # no str into int input exception handling has been implemented, as isn't mentioned in marking guidelines.
         # loop will repeat until loop_count is greater than gc_max_items or temp_max is higher than gc_max_spend
         while loop_count < gc_max_items and temp_max < gc_max_spend:
             cost = float(input("Purchase price: "))  # takes user input into cost variable
