@@ -3,7 +3,8 @@ Boring stuff
 Author: Daniel Ferguson
 Date: 10/3/22
 Task: INFT1004 Assignment 1: Spending Spree
-This is version 3, previous versions weren't compact enough.
+This is version 4, combination of methods used in v2 and v3, prior to v5 introduction of classes.
+First fully functioning version.
 """
 import sys
 

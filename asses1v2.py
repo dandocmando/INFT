@@ -3,6 +3,7 @@ Boring stuff
 Author: Daniel Ferguson
 Date: 10/3/22
 Task: INFT1004 Assignment 1 Spending Spree
+This was mostly a test, developed concurrently with v3 and then vertically integrated
 """
 import time
 

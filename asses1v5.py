@@ -1,18 +1,19 @@
 """
 Boring stuff
 Author: Daniel Ferguson
-Date: 10/3/22
+Auth ID: 3374690
+Date: 16/3/22
 Task: INFT1004 Assignment 1: Spending Spree
-This is version 4.
+This is version 5, if you would like to view previous versions I can supply them.
 Only used one class to pass variables :)
-Don't attempt to launch a def from the console, simply run the program with the button.
 """
 import sys
+import time
 
 
 class SpendingSpree:
-    def __init__(self):
-        self.gc_items_lst = []  # init variables in init so that other defs can use them
+    def __init__(self):  # def init is a special def, it's always run on class initiation
+        self.gc_items_lst = []  # init variables so that other defs can use them
         self.gc_cost_lst = []
         self.temp_max = 0
         self.loop_count = 0
@@ -20,9 +21,11 @@ class SpendingSpree:
         self.gc_max_spend = 0
         self.gc_max_items = 0
         self.username = ""
+        self.default_time = 0.3
 
     def intro(self):
         print("Hello, I am Delilah, your personal gift card management system.")
+        time.sleep(self.default_time)
         self.username = input("What is your name?\n")  # asks for users name for later use.
         print("Please enter the specifications of your gift card:\n")
 
@@ -31,17 +34,20 @@ class SpendingSpree:
         gc_max_spend = int(input("Gift card maximum spending:"))
         gc_max_items = int(input("Maximum number of items allowed to purchase:"))
         self.gc_name = gc_name  # sends local values back to init to they can be used by other defs
-        self.gc_max_items = gc_max_items
-        self.gc_max_spend = gc_max_spend
+        self.gc_max_items = gc_max_items  # not technically necessary, could just assign above values .self
+        self.gc_max_spend = gc_max_spend  # this shows the movement of var data better though, so I have left it.
 
         print("\n")
         # prints out the previously input details
+        time.sleep(self.default_time)
         print("These are your gift card details:\n" + "\nGift card name: " + gc_name)
+        time.sleep(self.default_time)
         print("Gift card maximum spending allowed: " + str(gc_max_spend))
+        time.sleep(self.default_time)
         print("Gift card maximum number of items allowed to purchase: " + str(gc_max_items) + "\n")
 
     def loop(self):
-        temp_max = self.temp_max  # pulls variable values from Rock init def
+        temp_max = self.temp_max  # pulls variable values from init def
         gc_max_items = self.gc_max_items
         gc_max_spend = self.gc_max_spend
         gc_cost_lst = self.gc_cost_lst
@@ -62,58 +68,66 @@ class SpendingSpree:
                 loop_count = loop_count + 1  # increments loop count
 
             else:
+                time.sleep(self.default_time)
                 print("The gift card doesn't have enough funds to process this purchase, please try again.\n")
 
-                # resets temp_max back to the last accepted spending amount by adding the current total of gc_cost_lst
+                # resets temp_max back to the last accepted spending amount by settings its value to gc_cost_lst
                 temp_max = sum(gc_cost_lst)
 
+            time.sleep(self.default_time)
             print("\nGift card used so far: $" + str(temp_max) + " out of $" + str(gc_max_spend) + "\n")
             self.loop_count = loop_count  # loop is modified after assignment so self.loop needs to be updated
 
     def list(self):
-        # brings def init variables into the list variables
-        gc_cost_lst = self.gc_cost_lst
+        gc_cost_lst = self.gc_cost_lst  # serves same purpose as previous def :)
         gc_items_lst = self.gc_items_lst
         loop_count = self.loop_count
         gc_name = self.gc_name
         gc_max_spend = self.gc_max_spend
         username = self.username
 
-        # nests Cost and Items into sublists so that Cost can be manipulated using sorted function
+        # nests Cost and Items into sublists so that Cost var can be manipulated using sorted function
+        # use prints on the below lists after manipulation to gain greater understanding of what is happening
         gc_list_nested = [list(t) for t in zip(gc_cost_lst, gc_items_lst)]
-        # uses nested list to sort nested items based on cost
+        # uses nested list to sort nested items based on cost, because desc is nested it follows cost movement
         gc_list_sorted = sorted(gc_list_nested, key=lambda l: l[0], reverse=True)
 
-        print("Gift card completely used!\n")
+        print("Gift card used, your purchases are listed below, they are ordered most to least expensive.\n")
         for x in range(loop_count):  # prints the list of transactions ordered highest cost to lowest :)
             print("Cost: $" + str(gc_list_sorted[x][0]) + ", item description: " + str(gc_list_sorted[x][1]))
+            time.sleep(self.default_time)
 
         gc_num_item_purchased = len(gc_list_sorted)  # counts number of nested list items for average computation
         gc_average_cost = sum(gc_cost_lst) / gc_num_item_purchased  # average cost with sum of lst / num of purchases
 
-        print("\nGift card used: " + str(gc_name) + ", spending limit: " + str(gc_max_spend))
+        time.sleep(self.default_time)
+        print("\nGift card used: " + str(gc_name) + ", spending limit: $" + str(gc_max_spend))
+        time.sleep(self.default_time)
         print("The number of items purchased was: " + str(gc_num_item_purchased))
-        print("The average cost was: " + str(round(gc_average_cost, 2)) + "\n")
+        time.sleep(self.default_time)
+        print("The average cost was: " + str(round(gc_average_cost, 2)) + "\n")  # rounds avg cost -> 2 dec places
+        time.sleep(self.default_time)
 
         print(username + ", would you like to try another card or exit the program?")
+        time.sleep(self.default_time)
         retry = input("Enter R to retry, enter E to exit the program: ")
         if retry == "R":
             print("\n")
-            game_ob_nest = SpendingSpree()  # creates object based on spendingspree class
-            game_ob_nest.intro()  # runs the required defs inside object
-            game_ob_nest.loop()
-            game_ob_nest.list()
+            spending_spree_ob_nest = SpendingSpree()  # creates object based on spendingspree class
+            spending_spree_ob_nest.intro()  # runs the required defs inside object
+            spending_spree_ob_nest.loop()
+            spending_spree_ob_nest.list()
 
         elif retry == "E":
             print("Have a nice day!")
-            sys.exit()
+            sys.exit()  # ends the .py
 
         else:
-            print("You failed to correctly enter a choice so I decided to exit the program for you.")
+            print("You failed to correctly enter a choice so I decided to exit the program for you :)")
             sys.exit()
 
 
-game_ob = SpendingSpree()  # creates object based on spending spree class
-game_ob.intro()  # launches defs from spending spree object
-game_ob.loop()
-game_ob.list()
+spending_Spree_ob = SpendingSpree()
+spending_Spree_ob.intro()
+spending_Spree_ob.loop()
+spending_Spree_ob.list()

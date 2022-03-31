@@ -2,7 +2,7 @@
 Boring stuff
 Author: Daniel Ferguson
 Auth ID: 3374690
-Date: Start -> 09/3/22 Upload -> 19/3/22
+Date: 16/3/22
 Task: INFT1004 Assignment 1: Spending Spree
 This is version 5, if you would like to view previous versions I can supply them.
 Only used one class to pass variables :)
