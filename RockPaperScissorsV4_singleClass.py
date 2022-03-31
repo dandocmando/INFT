@@ -19,12 +19,12 @@ class RockPaperScissors:
 
     def introduction(self):
         print("This is a game of rock paper scissors!")
-        # time.sleep(0.5)
+        time.sleep(0.5)
         print("You will say rock, paper or scissors and the computer will play against you.")
-        # time.sleep(0.5)
+        time.sleep(0.5)
         print("The inputs are: R = Rock, S = Scissors, P = paper.")
         print("You get five rounds to win.\n")
-        # time.sleep(5)
+        time.sleep(2)
 
     def comp_choice(self):
         return random.choice(list(self.outcomes))
@@ -44,6 +44,7 @@ class RockPaperScissors:
     def main_game(self):
 
         for i in range(5):
+            print("This is round: "+str(i+1)+" out of 5.")
             comp_choice = self.comp_choice()
             #print("comp: " + comp_choice)  # used for debugging
             self.user_choice()
