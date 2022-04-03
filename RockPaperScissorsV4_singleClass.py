@@ -65,6 +65,7 @@ class RockPaperScissors:
 
             elif self.player_choice == "P" and comp_choice == "S":
                 print("Computer wins! You chose: " + self.player_choice + " computer chose: " + comp_choice)
+                self.compScore += 1
 
             elif self.player_choice == "S" and comp_choice == "R":
                 print("Computer wins! You chose: " + self.player_choice + " computer chose: " + comp_choice)
