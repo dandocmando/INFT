@@ -29,15 +29,26 @@ class MainMenu:
 
     def menu(self):
         print("Welcome to the Spending Spree Menu!\n")
-        print("Options:\n Define a gift card (1). \n Go on a Spending Spree (2). \n Quit the program (Q).\n")
-        choice = input("Choose 1, 2 or Q: ")
+        print("Options:\n 1. Define a gift card. \n 2. Go on a Spending Spree. \n 3. Display list of existing gift "
+              "cards.\n 4. Display spending history. \n Q. Quit the program (Q).\n")
+
+        choice = input("Choose 1, 2, 3, 4 or Q: ")
         if choice == '1':
-            self.gift_card()
+            self.gift_card()  # pretty self-explanatory, launches the def gift_card
         if choice == '2':
             self.spending_spree()
+        if choice == '3':
+            self.gc_names()
+        if choice == '4':
+            self.gc_history()
+        if choice.lower() == 'q':
+            print("Goodbye! ")
+
+        else:
+            print("You failed to choose an option.")
 
     def gc_name_used(self, name):
-        # This method is used to determine if the argument 'name' is already a 'Name' in the giftCards.csv file
+        # This method is used to determine if the argument 'name' is already a 'GiftCardName' in the giftCards.csv file
         # if it is, then it will ask the user to replace the name with one not in the csv file.
 
         df = pd.read_csv('giftCards.csv')
@@ -102,14 +113,13 @@ class MainMenu:
             self.menu()  # returns to menu
 
     def spending_spree(self):
-
         df = pd.read_csv('test.csv')  # reads giftCards.csv into Dataframe df
         # print(df)
         # print(df.loc[0, 'Name'])
         print("\nPlease choose a gift card from this list: \n")
         for col in range(len(df)):
             print(str(df.loc[col, 'Name']) + " (" + str(col + 1) + ")")
-        col_ch = int(input("Choice: ")) - 1  # column choice (gc choice) used to assign vars below
+        col_ch = int(input("Choice: ")) - 1  # column choice (gc choice), used to assign vars below
 
         gc_card_name = df.loc[col_ch, 'Name']
         print(gc_card_name)
@@ -118,11 +128,8 @@ class MainMenu:
         gc_max_items = df.loc[col_ch, 'MaxItems']
         print(gc_max_items)
 
-
-
-
         temp_max = 0
-        # gc_max_items = self.gc_max_items  # pulls variable values from init def  # deprecated
+        # gc_max_items = self.gc_max_items  # pulls variable values from init def  # deprecated by df.loc
         # gc_max_spend = self.gc_max_spend
         gc_cost_lst = self.gc_cost_lst
         gc_items_lst = self.gc_items_lst
@@ -155,11 +162,35 @@ class MainMenu:
             print("\nGift card used so far: $" + str(temp_max) + " out of $" + str(gc_max_spend) + "\n")
             self.loop_count = loop_count  # loop is modified after assignment so self.loop needs to be updated
 
+    def gc_history(self):
+        print("List of gift cards: ")
+        init = pd.read_csv('someNumbers.csv')
+
+        gc_names = init['GiftCardName'].copy()  # creates a series from the 'GiftCardName' column in init
+        gc_names = gc_names.drop_duplicates()  # removes duplicate names from the series
+        gc_names = gc_names.to_frame()  # turns the series into a dataframe
+        gc_names.reset_index(inplace=True, drop=True)  # fixes the index
+
+        for i in range(len(gc_names.index)):  # loops for the number of gift card names in the dataframe
+            print(str(gc_names.loc[i, 'GiftCardName']))  # prints each name in the dataframe
+
+        view_choice = input("\nPlease enter the exact name of the gift card you would like to view: ")
+        print("")
+
+        init.set_index('GiftCardName', inplace=True)  # makes column 'GiftCardName' the index
+        gc_indiv_purchases = init.loc[view_choice, :]  # passes rows based on index name, selected by view_choice
+        gc_indiv_purchases.reset_index(inplace=True, drop=True)  # removes GiftCardName index, replaces with 0,1,2 etc
+
+        t.sleep(self.dt)
+        print("Purchase History:")
+        for col in range(len(gc_indiv_purchases)):
+            t.sleep(self.dt)
+            print(str(col + 1) + ". $" + str(gc_indiv_purchases.loc[col, 'ItemPrice']) + ", " +
+                  str(gc_indiv_purchases.loc[col, 'ItemDescription']))
+
+    def gc_names(self):
+        print("penis")
+
 
 MainMenu_ob = MainMenu()  # instantiates a new object of the MainMenu Class
 MainMenu_ob.menu()
-
-# MainMenu_ob.gc_name_used("test")
-# name = "test"
-# name = MainMenu_ob.gc_name_used(name)
-# print(name)
