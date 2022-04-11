@@ -2,7 +2,7 @@ import numpy as np
 
 
 def sortedArray():
-    number_lines = [line.strip() for line in open('someNumbers.csv')]
+    number_lines = [line.strip() for line in open('../INFT_Assess2/someNumbers.csv')]
     numbers_L = [line.split(',') for line in number_lines]
     xSeries = np.arange(1, 11)
     ySeries1 = []
