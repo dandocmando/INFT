@@ -3,7 +3,7 @@ import pandas as pd
 
 
 def editCSV():
-    df = pd.read_csv('someNumbers.csv', header=None)
+    df = pd.read_csv('../INFT_Assess2/someNumbers.csv', header=None)  # reads someNumbers.csv into df var
 
     data_frame = pd.DataFrame(df)  # creates a panda dataframe with the contents of the someNumbers.csv file
     lst = data_frame.to_numpy().flatten()  # creates a  flattened list in numpty from the panda dataframe
